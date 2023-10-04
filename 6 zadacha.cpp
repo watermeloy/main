@@ -5,7 +5,10 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     
-    int sequence;
+    int sequence = 0;
+    int maxNumber = 0;
+    int maxIndex = -1;
+    int product = 1;
 
     int n;
     cout << "Введите размер последовательности: ";
@@ -16,10 +19,6 @@ int main()
     {
         cin >> sequence[i];
     }
-
-    int maxNumber = 0;
-    int maxIndex = -1;
-    int product = 1;
 
     for (int i = 0; i < n; i++) 
     {
