@@ -12,11 +12,11 @@ int main()
 	}
 	else
 	{
-		cout << 0;
+		cout << 0 << endl;
 	}
 
-	std::cout << "Введите натуральное число N: ";
-	std::cin >> N;
+	cout << "Введите натуральное число N: ";
+	cin >> N;
 
     int frequencyCount = 0;
 
@@ -44,7 +44,7 @@ int main()
         }
     }
 
-    std::cout << "Наиболее часто встречающаяся цифра: " << mostFrequentDigit << std::endl;
+    cout << "Наиболее часто встречающаяся цифра: " << mostFrequentDigit << endl;
 	
 	return 0;
 }
