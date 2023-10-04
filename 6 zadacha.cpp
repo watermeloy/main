@@ -22,12 +22,12 @@ int main()
 
     for (int i = 0; i < n; i++) 
     {
-        if (sequence[i] % 10 == 2) {
-            if (sequence[i] > maxNumber) {
-                maxNumber = sequence[i];
+        if (sequence % 10 == 2) {
+            if (sequence > maxNumber) {
+                maxNumber = sequence;
                 maxIndex = i;
             }
-            product *= sequence[i];
+            product *= sequence;
         }
     }
 
