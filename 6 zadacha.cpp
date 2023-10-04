@@ -9,8 +9,8 @@ int main()
     int maxNumber = 0;
     int maxIndex = -1;
     int product = 1;
-
     int n;
+    
     cout << "Введите размер последовательности: ";
     cin >> n;
 
