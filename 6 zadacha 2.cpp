@@ -8,15 +8,13 @@ int main()
 	int N{};
 	if (N < 1000000000)
 	{
+		cout << "Введите натуральное число N: ";
 		cin >> N;
 	}
 	else
 	{
 		cout << 0 << endl;
 	}
-
-	cout << "Введите натуральное число N: ";
-	cin >> N;
 
     int frequencyCount = 0;
 
