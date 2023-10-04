@@ -4,9 +4,8 @@ using namespace std;
 int main() 
 {
     setlocale(LC_ALL, "Russian");
-
-    const int maxSize = 100;
-    int sequence[maxSize];
+    
+    int sequence;
 
     int n;
     cout << "Введите размер последовательности: ";
