@@ -17,7 +17,7 @@ int main()
     cout << "Введите элементы последовательности: ";
     for (int i = 0; i < n; i++) 
     {
-        cin >> sequence[i];
+        cin >> sequence;
     }
 
     for (int i = 0; i < n; i++) 
