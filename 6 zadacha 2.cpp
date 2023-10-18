@@ -1,48 +1,46 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");
 
-	int N{};
-	if (N < 1000000000)
-	{
-		cout << "Введите натуральное число N: ";
-		cin >> N;
-	}
-	else
-	{
-		cout << 0 << endl;
-	}
+    int N{};
 
-    int frequencyCount = 0;
+    cout << "Введите натуральное число N: ";
+    cin >> N;
 
-    for (int i = 0; i <= 9; i++) 
+    if (N < 1000000000)
     {
-        frequencyCount = 0;
+        cout << "OK " << endl;
     }
+    else
+    {
+        cout << "Not OK " << endl;
+    }
+
+    int frequency[10] = { 0 }; 
 
     while (N > 0) 
     {
-        int digit = N % 10;
-        frequencyCount++;
-        N /= 10;
+        int digit = N % 10; 
+        frequency[digit]++; 
+        N /= 10; 
     }
 
-    int maxFrequency = 0;
-    int mostFrequentDigit = 0;
+    int mostFrequencyDigit = 0; 
+    int maxFrequency = frequency[0]; 
 
-    for (int i = 0; i <= 9; i++) 
+    for (int i = 1; i < 10; i++) 
     {
-        if (frequencyCount > maxFrequency) 
+        if (frequency[i] >= maxFrequency) 
         {
-            maxFrequency = frequencyCount;
-            mostFrequentDigit = i;
+            mostFrequencyDigit = i;
+            maxFrequency = frequency[i];
         }
     }
 
-    cout << "Наиболее часто встречающаяся цифра: " << mostFrequentDigit << endl;
-	
-	return 0;
+    cout << "Наиболее часто встречающаяся цифра: " << mostFrequencyDigit << endl;
+
+    return 0;
 }
