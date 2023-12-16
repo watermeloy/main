@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+int digitProduct(int num) 
+{
+	int product = 1;
+	while (num != 0) 
+	{
+		int digit = num % 10;
+		product *= digit;
+		num /= 10;
+	}
+	return product;
+}
+
+int main() 
+{
+	setlocale(LC_ALL, "Russian");
+	const int n = 1000;
+	int sequence[n];
+
+	int sequenceSize;
+	cout << "Введите размер последовательности (n <= 1000): ";
+	cin >> sequenceSize;
+	cout << "Введите " << sequenceSize << " натуральных чисел: ";
+	for (int i = 0; i < sequenceSize; i++) 
+	{
+		cin >> sequence[i];
+	}
+
+	for (int i = 0; i < sequenceSize - 1; i++) 
+	{
+		for (int j = 0; j < sequenceSize - i - 1; j++) 
+		{
+			if (digitProduct(sequence[j]) > digitProduct(sequence[j + 1])) 
+			{
+				int temp = sequence[j];
+				sequence[j] = sequence[j + 1];
+				sequence[j + 1] = temp;
+			}
+			else if (digitProduct(sequence[j]) == digitProduct(sequence[j + 1])) 
+			{
+				if (sequence[j] > sequence[j + 1]) 
+				{
+					int temp = sequence[j];
+					sequence[j] = sequence[j + 1];
+					sequence[j + 1] = temp;
+				}
+			}
+		}
+	}
+
+	cout << "Отсортированная последовательность: ";
+	for (int i = 0; i < sequenceSize; i++) {
+		cout << sequence[i] << " ";
+	}
+
+	return 0;
+}
