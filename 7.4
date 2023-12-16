@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+int getProductOfDigits(int num) 
+{
+	int product = 1;
+	while (num != 0) 
+	{
+		product *= num % 10;
+		num /= 10;
+	}
+	return product;
+}
+
+bool isFirstAndLastDigitOne(int num) 
+{
+	if (num < 10) 
+	{
+		return false;
+	}
+	int lastDigit = num % 10;
+	while (num >= 10) 
+	{
+		num /= 10;
+	}
+	int firstDigit = num;
+	return (firstDigit == 1 && lastDigit == 1);
+}
+
+int main() 
+{
+	setlocale(LC_ALL, "Russian");
+	const int MAX_SIZE = 10000;
+	int n;
+	cout << "Введите количество элементов в последовательности (n <= 10000): ";
+	cin >> n;
+
+	int sequence[MAX_SIZE];
+	int newSize = 0;
+
+	for (int i = 0; i < n; i++) 
+	{
+		cout << "Введите элемент A" << i + 1 << ": ";
+		cin >> sequence[i];
+		if (getProductOfDigits(sequence[i]) != 180) 
+		{
+			sequence[newSize] = sequence[i];
+			newSize++;
+		}
+	}
+
+	for (int i = 0; i < newSize; i++) 
+	{
+		if (isFirstAndLastDigitOne(sequence[i])) 
+		{
+			sequence[newSize] = sequence[i];
+			newSize++;
+		}
+	}
+
+	cout << "Обновленная последовательность:\n";
+	for (int i = 0; i < newSize; i++) 
+	{
+		cout << sequence[i] << " ";
+	}
+	cout << endl;
+
+	return 0;
+}
