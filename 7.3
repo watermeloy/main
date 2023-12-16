@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 100;
+
+int main() 
+{
+	setlocale(LC_ALL, "Russian");
+	int n, m;
+	cout << "Введите количество строк (n <= 100): ";
+	cin >> n;
+	cout << "Введите количество столбцов (m <= 100): ";
+	cin >> m;
+
+	int matrix[MAX_SIZE][MAX_SIZE];
+
+	for (int i = 0; i < n; i++) 
+	{
+		for (int j = 0; j < m; j++) 
+		{
+			cout << "Введите элемент A[" << i << "][" << j << "]: ";
+			cin >> matrix[i][j];
+		}
+	}
+
+	int minEvenCount = m, minEvenRowIndex = -1;
+	for (int i = 0; i < n; i++) 
+	{
+		int evenCount = 0;
+		for (int j = 0; j < m; j++) 
+		{
+			if (matrix[i][j] % 2 == 0) 
+			{
+				evenCount++;
+			}
+		}
+		if (evenCount < minEvenCount) 
+		{
+			minEvenCount = evenCount;
+			minEvenRowIndex = i;
+		}
+	}
+
+	if (minEvenRowIndex != -1) 
+	{
+		for (int j = 0; j < m; j++) 
+		{
+			matrix[minEvenRowIndex][j] *= matrix[minEvenRowIndex][j];
+		}
+	}
+
+	cout << "Обновленная матрица:\n";
+	for (int i = 0; i < n; i++) 
+	{
+		for (int j = 0; j < m; j++) 
+		{
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
