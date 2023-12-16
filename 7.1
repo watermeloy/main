@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num) 
+{
+	if (num <= 1) 
+	{
+		return false;
+	}
+	for (int i = 2; i * i <= num; i++) 
+	{
+		if (num % i == 0) 
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() 
+{
+	setlocale (LC_ALL,"Russian");
+	const int n = 10000;
+	int sequence[n];
+
+	cout << "Введите размер последовательности (n <= 10000): ";
+	int size;
+	cin >> size;
+
+	cout << "Введите " << size << " натуральных чисел: ";
+	for (int i = 0; i < size; i++) 
+	{
+		cin >> sequence[i];
+	}
+
+	bool hasPrime = false;
+	for (int i = 0; i < size; i++) 
+	{
+		if (isPrime(sequence[i])) 
+		{
+			hasPrime = true;
+			break;
+		}
+	}
+
+	if (hasPrime) 
+	{
+		for (int i = 0; i < size - 1; i++) 
+		{
+			for (int j = 0; j < size - i - 1; j++) 
+			{
+				if (sequence[j] > sequence[j + 1]) 
+				{
+					int temp = sequence[j];
+					sequence[j] = sequence[j + 1];
+					sequence[j + 1] = temp;
+				}
+			}
+		}
+
+		cout << "Отсортированная последовательность: ";
+		for (int i = 0; i < size; i++) 
+		{
+			cout << sequence[i] << " ";
+		}
+	}
+	else 
+	{
+		cout << "В последовательности нет простых чисел.";
+	}
+
+	return 0;
+}
