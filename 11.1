@@ -1,0 +1,47 @@
+#include <algorithm>
+#include <iostream>
+
+bool is_prime(int num) {
+	if (num <= 1) {
+		return false;
+	}
+	for (int i = 2; i * i <= num; i++) {
+		if (num % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	int n;
+	std::cout << "Enter the number of elements: ";
+	std::cin >> n;
+
+	int* arr = new int[n];
+	bool has_prime = false;
+
+	for (int i = 0; i < n; i++) {
+		std::cout << "Enter element " << i + 1 << ": ";
+		std::cin >> arr[i];
+		if (!has_prime && is_prime(arr[i])) {
+			has_prime = true;
+		}
+	}
+
+	if (has_prime) {
+		std::cout << "The sequence contains at least one prime number. Sorting the sequence in non-decreasing order." << std::endl;
+		std::sort(arr, arr + n);
+	}
+	else {
+		std::cout << "The sequence does not contain any prime number. The sequence remains unchanged." << std::endl;
+	}
+
+	std::cout << "Sequence: ";
+	for (int i = 0; i < n; i++) {
+		std::cout << arr[i] << " ";
+	}
+
+	delete[] arr;
+	return 0;
+}
